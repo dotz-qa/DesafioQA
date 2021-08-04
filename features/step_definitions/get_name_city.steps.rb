@@ -1,17 +1,22 @@
 Dado('o endereço da API utilizada para o request') do
-    $uri_teste = "http://api.openweathermap.org/data/2.5/weather?q=#{@cidade}&appid=#{@appid_is_valid}"
-    log  "#{$uri_teste}"
+    @request = Owm.new()
+
 end
 
 Quando('é informado a cidade de origem') do
-    $resultado = HTTParty.get($uri_teste);
-    log  "#{$resultado}"
+    @response =  @request.city
 end
 
 Então('verifico que o status code é {int}') do |int|
-    log "status code #{$resultado.code}"
+    expect(@response.code).to eq(200)
 end
 
 Então('há conversão de kelvin para celsius') do
-  pending # Write code here that turns the phrase above into concrete actions
+    log "Tempetura: #{@response["main"]["temp"]}"
+    log "Temperatura máxima: #{@response["main"]["temp_max"]}"
+    log "Temperatura miníma: #{@response["main"]["temp_min"]}"
+    @converter = @request.kelvin_to_celsius(@response["main"]["temp"], @response["main"]["temp_max"], @response["main"]["temp_min"])
+    log "Kelvin to Celsius: #{@converter[0]}"
+    log "Kelvin to Celsius: #{@converter[1]}"
+    log "Kelvin to Celsius: #{@converter[2]}"
 end
