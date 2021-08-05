@@ -1,6 +1,5 @@
 Dado('o endereço da API') do
     $request = Owm.new()
-
 end
 
 Quando('informo a latitude e longitude da melhor cidade visitada') do
@@ -8,7 +7,7 @@ Quando('informo a latitude e longitude da melhor cidade visitada') do
 end
 
 Então('armazeno os dados do weather->main e o visibility') do
-    @armezena_dados = $request.store_information(@response["weather"][0]["main"], @response["visibility"])
+    @armezena_dados = store_information(@response["weather"][0]["main"], @response["visibility"])
     log "Main: #{@armezena_dados[0]}"
     log "Visibility: #{@armezena_dados[1]}"
 end

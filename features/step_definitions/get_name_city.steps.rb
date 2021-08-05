@@ -11,7 +11,7 @@ Então('verifico que o status code é {int}') do |status_code|
 end
 
 Então('há conversão de kelvin para celsius') do
-    @converter = $request.kelvin_to_celsius(@response["main"]["temp"], @response["main"]["temp_max"], @response["main"]["temp_min"])
+    @converter = kelvin_to_celsius(@response["main"]["temp"], @response["main"]["temp_max"], @response["main"]["temp_min"])
     log "Kelvin to Celsius: #{@converter[0]}"
     log "Kelvin to Celsius: #{@converter[1]}"
     log "Kelvin to Celsius: #{@converter[2]}"
