@@ -10,3 +10,8 @@ Cenario: Pesquisar produto na loja Dotz
 Dado que estou na loja dotz
 Quando pesquiso o produto Notebook
 Então o resultado é uma lista de Notebook com vários modelos
+
+Cenario: Produto inexistente
+Dado que estou na loja dotz
+Quando pesquiso o produto Crepioca
+Então percebo que nenhum produto foi encontrado
