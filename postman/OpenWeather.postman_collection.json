@@ -1,0 +1,168 @@
+{
+	"info": {
+		"_postman_id": "02ac8cac-c315-4834-851d-217ce1401730",
+		"name": "OpenWeather",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET Temperature by City",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code retornado é 200\", function () {",
+							"  pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Salvando a temperatura em Celsius\", function () {",
+							"    let data = JSON.parse(responseBody)",
+							"    let temp_kelvin = data[\"main\"]",
+							"    let temp_celsius = (temp_kelvin - 273).round(2)",
+							"})",
+							"// pm.expect(typeof item[\"alert_id\"]).to.be.oneOf(['number', 'array']);",
+							"// let data = JSON.parse(responseBody)",
+							"// let temp_kelvin = data[\"main\"]",
+							"// let temp_celsius = (temp_kelvin - 273).round(2)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "api.openweathermap.org/data/2.5/weather?q=Rio de Janeiro&appid=a75c7c98129a8c8ac9f0bae3aac5cbc5",
+					"host": [
+						"api",
+						"openweathermap",
+						"org"
+					],
+					"path": [
+						"data",
+						"2.5",
+						"weather"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "Rio de Janeiro"
+						},
+						{
+							"key": "appid",
+							"value": "a75c7c98129a8c8ac9f0bae3aac5cbc5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Temperature by latitude and longitude",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code retornado é 200\", function () {",
+							"  pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Salvando a temperatura em Celsius\", function () {",
+							"    let data = JSON.parse(responseBody)",
+							"    let weathers = data[\"weather\"]",
+							"    let weather = weathers[0][\"main\"]",
+							"    let visibility = data[\"visibility\"]",
+							"",
+							"    console.log(`Armazenando o valor do campo Weather => Main na variável weather: ${weather}`)",
+							"",
+							"    console.log(`Armazenando o valor do campo Visibility na variável visibility: ${visibility}`)",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "api.openweathermap.org/data/2.5/weather?lat=-23.3369&lon=-44.6288&appid=a75c7c98129a8c8ac9f0bae3aac5cbc5",
+					"host": [
+						"api",
+						"openweathermap",
+						"org"
+					],
+					"path": [
+						"data",
+						"2.5",
+						"weather"
+					],
+					"query": [
+						{
+							"key": "lat",
+							"value": "-23.3369"
+						},
+						{
+							"key": "lon",
+							"value": "-44.6288"
+						},
+						{
+							"key": "appid",
+							"value": "a75c7c98129a8c8ac9f0bae3aac5cbc5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Invalid Key",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code retornado é 401\", function () {",
+							"  pm.response.to.have.status(401);",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "api.openweathermap.org/data/2.5/weather?q=Rio de Janeiro&appid=fdsfnsjkh23j4kh23j42ufsdfs",
+					"host": [
+						"api",
+						"openweathermap",
+						"org"
+					],
+					"path": [
+						"data",
+						"2.5",
+						"weather"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "Rio de Janeiro"
+						},
+						{
+							"key": "appid",
+							"value": "fdsfnsjkh23j4kh23j42ufsdfs"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
