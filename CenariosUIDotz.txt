@@ -1,0 +1,66 @@
+CT01 - Efetuar cadastro sem login cadastrado
+Dado que esteja na home do site "https://dotz.com.br/"
+E clicar no botao entrar
+Quando informar um CPF valido
+Mas o CPF nao estiver cadastrado 
+Entao o site retornara uma mensagem de erro
+
+
+@Cadastro
+Feature: Cadastro
+Como usuário desejo realizar meu cadastro na Dotz para aproveitar todos os benefícios
+
+Background: Acesso ao site
+
+Given que eu esteja no site “https://www.dotz.com.br”
+And clicar no botão Cadastrar
+
+@DadosValidos
+Scenario: Cadastro com dados validos
+
+When preencher as telas de cadastro com dados validos
+Then valido cadastro efetuado com sucesso
+
+@DadosInvalidos
+Scenario: Cadastro com dados inválidos
+
+When preencher o CPF com dados inválidos e aceitar os termos
+Then botão entrar não é habilitado impedindo continuar cadastro
+
+
+
+@Login
+Feature: Login
+Como usuario cadastrado na Dotz quero realizar meu login para aproveitar os benefícios
+
+Background: Acesso ao site
+
+Given que eu esteja no site “https://www.dotz.com.br”
+And clicar no botão Entrar
+
+
+@LoginValido
+Scenario: Login de usuario cadastrado
+
+When preencher campo de CPF com numero ja cadastrado
+And preencher senha e pergunta de segurança
+Then login feito com sucesso
+
+@LoginInvalido
+Scenario: Login de usuário não cadastrado
+
+When preencher campo CPF com numero valido de um usuário não cadastrado
+Then sou direcionado para tela de cadastro
+
+@LoginCPFInvalido
+Scenario: Login com CPF inválido
+
+When preencher campo CPF com numero invalido
+Then botão entrar não é habilitado impedindo login
+
+@LoginSenhaInvalida
+Scenario: Login com senha inválida
+
+When preencher campo CPF com numero ja cadastrado
+But preencher senha invalida
+Then após três tentativas usuário deve ser bloqueado
