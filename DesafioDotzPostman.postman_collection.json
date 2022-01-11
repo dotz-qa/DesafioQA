@@ -1,0 +1,167 @@
+{
+	"info": {
+		"_postman_id": "fa66477c-d229-412f-9251-f571440b5143",
+		"name": "DesafioDotzPostman",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "ConsultaCidadeOrigem",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "api.openweathermap.org/data/2.5/weather?q=Botucatu&appid=5b1f44bf561cf8f740907980a9b04cd9&units=metric&lang=pt_br",
+					"host": [
+						"api",
+						"openweathermap",
+						"org"
+					],
+					"path": [
+						"data",
+						"2.5",
+						"weather"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "Botucatu"
+						},
+						{
+							"key": "appid",
+							"value": "5b1f44bf561cf8f740907980a9b04cd9"
+						},
+						{
+							"key": "units",
+							"value": "metric"
+						},
+						{
+							"key": "lang",
+							"value": "pt_br"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ConsultaLatLon",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "api.openweathermap.org/data/2.5/weather?lat=-22.8858&lon=-48.445&appid=5b1f44bf561cf8f740907980a9b04cd9",
+					"host": [
+						"api",
+						"openweathermap",
+						"org"
+					],
+					"path": [
+						"data",
+						"2.5",
+						"weather"
+					],
+					"query": [
+						{
+							"key": "lat",
+							"value": "-22.8858"
+						},
+						{
+							"key": "lon",
+							"value": "-48.445"
+						},
+						{
+							"key": "appid",
+							"value": "5b1f44bf561cf8f740907980a9b04cd9"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ConsultaAcessoNaoAutorizado",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 401\", function () {",
+							"    pm.response.to.have.status(401);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "api.openweathermap.org/data/2.5/weather?q=Santo Andre&appid=c35205acc8938d356723d78d1d88a76&units=metric&lang=pt_br",
+					"host": [
+						"api",
+						"openweathermap",
+						"org"
+					],
+					"path": [
+						"data",
+						"2.5",
+						"weather"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "Santo Andre"
+						},
+						{
+							"key": "appid",
+							"value": "c35205acc8938d356723d78d1d88a76"
+						},
+						{
+							"key": "units",
+							"value": "metric"
+						},
+						{
+							"key": "lang",
+							"value": "pt_br"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
