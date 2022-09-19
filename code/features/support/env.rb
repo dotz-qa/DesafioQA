@@ -1,4 +1,5 @@
 require 'httparty'
 require 'rspec'
 
-DATA = YAML.load_file(File.dirname(__FILE__) + "/data.yml")
+CITY = YAML.load_file(File.dirname(__FILE__) + "/data.yml")
+AUTHENTICATION = YAML.load_file(File.dirname(__FILE__) + "/authentication.yml")

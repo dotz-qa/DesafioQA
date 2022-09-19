@@ -3,8 +3,8 @@ Dado('o endereço da API para ser realizada a requisição') do
 end
 
 Quando('o usuário insere a latitude e longitude da cidade de {string}') do |city|
-    latitude = DATA[city]["latitude"]
-    longitude = DATA[city]["longitude"]
+    latitude = CITY[city]["latitude"]
+    longitude = CITY[city]["longitude"]
     $resp = $response.getInfosByLatLong(latitude, longitude)
 end
 

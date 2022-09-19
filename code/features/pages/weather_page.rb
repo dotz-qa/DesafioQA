@@ -11,7 +11,7 @@
           :headers => $headers,
           :query => {
             :q => city,
-            :appid => DATA['appid']
+            :appid => AUTHENTICATION['appid']
           }
         )
         responseJSON = JSON.parse(response.body)
@@ -23,7 +23,7 @@
           :query =>{
             :lat => lat,
             :lon => lon,
-            :appid => DATA['appid']
+            :appid => AUTHENTICATION['appid']
           }
         )
         responseJSON = JSON.parse(response.body)
@@ -34,7 +34,7 @@
           :headers => $headers,
           :query => {
             :q => city,
-            :appid => DATA['invalidAppid']
+            :appid => AUTHENTICATION['invalidAppid']
           }
         )
         responseJSON = JSON.parse(response.body)
